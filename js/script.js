@@ -14,6 +14,7 @@ function loadData() {
     // load streetview
 
     // YOUR CODE GOES HERE!
+    $body.append('<img class="bgimg" src="https://maps.googleapis.com/maps/api/streetview?size=800x600&pitch=-20&location=' + $('#street').val() + ', ' + $('#city').val() + '">');
 
     return false;
 };
