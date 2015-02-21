@@ -12,9 +12,21 @@ function loadData() {
     $nytElem.text("");
 
     // load streetview
+    $body.append('<img class="bgimg" src="https://maps.googleapis.com/maps/api/streetview?size=800x600&pitch=-20&location='
+        + $('#street').val()
+        + ', '
+        + $('#city').val()
+        + '">');
 
     // YOUR CODE GOES HERE!
-    $body.append('<img class="bgimg" src="https://maps.googleapis.com/maps/api/streetview?size=800x600&pitch=-20&location=' + $('#street').val() + ', ' + $('#city').val() + '">');
+
+    var URL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?";
+    var KEY = "api-key=ebd9e23f94efc45658eb7e829bee79d1:1:71392649";
+    var URI = URL + KEY;
+
+    $.getJSON(URI, function(data) {
+        console.log(data);
+    });
 
     return false;
 };
