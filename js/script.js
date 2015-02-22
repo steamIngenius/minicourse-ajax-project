@@ -46,6 +46,8 @@ function loadData() {
         }
 
         // FUTURE: use data.response.docs.X.lead_paragraph to implement a read more... option that stays on this page
+    }).error( function() {
+        $nytElem.append('<li>Unable to load articles. Try again later.</li>');
     });
 
     // done
