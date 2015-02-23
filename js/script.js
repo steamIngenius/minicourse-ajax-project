@@ -26,6 +26,8 @@ function loadData() {
     var URI = URL + QUERY + '&' + KEY;
 
     // AJAJ request action, now with 50% more callback!
+
+    // Get me some NYTimes
     $.getJSON(URI, function(data) {
 
         // console.log(data);
@@ -46,8 +48,34 @@ function loadData() {
         }
 
         // FUTURE: use data.response.docs.X.lead_paragraph to implement a read more... option that stays on this page
-    }).error( function() {
-        $nytElem.append('<li>Unable to load articles. Try again later.</li>');
+    }).error( function(data) {
+        $nytElem.append('<li><p>Unable to load articles. Try again later. Also I logged something for you in the console.</p></li>');
+        console.log('I found this: ', data);
+    });
+
+
+    // Get me some Wikipedia!
+    // need dataType: jsonp?
+    //  Function( Anything data, String textStatus, jqXHR jqXHR )
+    // var wikiURI = 'http://en.wikipedia.org/w/api.php?format=json';
+    var wikiURI = 'http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?';
+
+    $.ajax({
+        type: 'GET',
+        url: wikiURI,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function( data, textStatus, jqXHR ) {
+
+            console.log('Yes, this is actually a thing. Javascript is really awesome!');
+            console.log(data, textStatus, jqXHR);
+
+        }
+    }).error( function(data) {
+
+        $wikiElem.append('<li><p>Unable to load articles. Try again later. Also I logged something for you in the console.</p></li>');
+        console.log('I found this: ', data);
+
     });
 
     // done
