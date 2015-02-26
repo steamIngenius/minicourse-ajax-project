@@ -58,14 +58,14 @@ function loadData() {
     // need dataType: jsonp?
     //  Function( Anything data, String textStatus, jqXHR jqXHR )
     // var wikiURI = 'http://en.wikipedia.org/w/api.php?format=json';
-    var wikiURI = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + $('#city').val() + '&format=json&callback=?';
+    var wikiURI = 'http://en.wikiasdfasdfpedia.org/w/api.php?action=opensearch&search=' + $('#city').val() + '&format=json&callback=?';
     console.log(wikiURI);
 
     $.ajax({
         type: 'GET',
         url: wikiURI,
         contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
+        dataType: 'jsonp',
         success: function( data, textStatus, jqXHR ) {
 
             // console.log('Yes, this is actually a thing. Javascript is really awesome!');
